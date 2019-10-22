@@ -1,0 +1,277 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <script src="https://get.mavo.io/stable/mavo.es5.min.js"></script>
+    <link rel="stylesheet" href="https://get.mavo.io/stable/mavo.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700|Roboto+Slab:700&display=swap"
+        rel="stylesheet">
+    <!-- https://zavoloklom.github.io/material-design-iconic-font/icons.html -->
+
+    <title>Triplog</title>
+    <style>
+        body {
+            font-family: 'Roboto Condensed', sans-serif;
+            color: #4F4F4F
+        }
+
+        h1 {
+            font-size: 1rem;
+            font-weight: 300;
+        }
+
+        h2 {
+            font-size: 3rem;
+            text-transform: uppercase;
+            margin: 0;
+        }
+
+        h3 {
+            font-family: 'Roboto Slab', serif;
+            font-size: 2rem;
+            margin-bottom: .5rem;
+        }
+
+        p {
+            margin-top: 0;
+            font-weight: 300;
+            font-size: 18px;
+            line-height: 1.3;
+        }
+
+        .pb-2 {
+            padding-bottom: 2rem;
+        }
+
+        .location {
+            padding-bottom: 2rem;
+            display: inline-block;
+            font-weight: 300;
+            text-transform: capitalize;
+            font-size: .9rem;
+        }
+
+        .when {
+            display: inline-block;
+            font-weight: 300;
+            padding-bottom: 2rem;
+        }
+
+        time {
+            font-size: 14px;
+            line-height: 16px;
+        }
+
+        article {
+            border-bottom: 1px solid #EAE8E3;
+        }
+
+        div.clear {
+            clear: both;
+            padding-bottom: 3rem;
+        }
+
+
+        .mv-bar.mv-ui {
+            background-color: #546F94;
+            font-size: .75rem;
+        }
+
+        .mv-add {
+            background: transparent;
+            border: 2px solid #546F94;
+            border-radius: 3px;
+            color: #546F94;
+            text-transform: uppercase;
+            padding: 0.5rem;
+            margin-top: 3rem;
+        }
+
+        a {
+            color: #546F94;
+        }
+
+        nav a {
+            font-size: .8rem;
+            margin-left: 1rem;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        nav a,
+        nav a:focus,
+        nav a:visited,
+        nav a:active {
+            color: #76BBE5 !important;
+        }
+
+        main {
+            max-width: 800px;
+            min-height: 100vh;
+            margin: 0 auto;
+            background: #fff;
+            transition: padding 300ms ease;
+        }
+
+        img {
+            float: left;
+            max-width: 400px;
+            margin-right: 2rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        @media (max-width: 736px) {
+            img {
+                float: none;
+                max-width: 100%;
+                height: auto;
+                padding-top:1rem;
+            }
+
+            body {
+                margin: 0 2rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            h3 {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                margin: 0 2rem;
+            } 
+        }
+    </style>
+</head>
+
+<body mv-app="triplog" mv-storage="https://github.com/dreh/mv-data/triplog-data.json" mv-plugins="tinymce">
+    <header>
+        <nav>
+            <!--  <a href="/index.html">Archives</a>
+            <a href="/about">About</a> -->
+            <a href="?login" class="mv-login mv-logged-out">Login</a>
+        </nav>
+    </header>
+    <main class="index">
+        <section class="index">
+
+            <h1><i class="zmdi zmdi-airplane"></i> Triplog</h1>
+            <h2 property="tripTitle"></h2>
+            <span property="tripDate" class="when">25 to 30 november 2019</span>
+
+            <div class="mv-bar mv-ui mv-fixed" mv-bar="no-login"></div>
+            <article mv-multiple mv-attribute="none" mv-order="desc" property="post">
+                <div style="float:left"><img property="image"></div>
+                <h3 property="postTitle"></h3>
+                <i class="zmdi zmdi-pin "></i> <span class="location" property="location"></span>
+
+                <p property="text" class="tinymce"></p>
+
+                <!-- <img src="/demos/talks/flags/[country].png" /> -->
+
+                <!--  <span property="country" mv-edit="#countries"> </span>
+
+                    <div hidden>
+                        <select id="countries">
+                            <option value="gb">&#x1F923;</option>
+                            <option value="bi"><i class="zmdi zmdi-bike"></i> </option>
+                            <option value="lo">😍</option>
+                            <option value="su"><i class="zmdi zmdi-sun"></i> </option>
+                            <option value="cl"><i class="zmdi zmdi-cloud-outline"></i>  </option>
+                            <option value="sc"><i class="zmdi zmdi-shopping-cart"></i>  </option>
+                            <option value="ra"><i class="zmdi zmdi-nature-people"></i></option>
+                            <option value="gl">🌎</option>
+                            <option value="ld"><i class="zmdi zmdi-flight-land"></i> </option>
+                            <option value="tf"><i class="zmdi zmdi-flight-takeoff"></i> </option>
+                            <option value="ai"><i class="zmdi zmdi-airplane"></i> </option>
+                            <option value="la"><i class="zmdi zmdi-hotel"></i> </option>
+                            <option value="to"><i class="zmdi zmdi-favorite"></i> </option>
+                            <option value="at"><i class="zmdi zmdi-bus"></i> </option>
+                            <option value="ca"><i class="zmdi zmdi-car"></i>  </option>
+                            <option value="gr"><i class="zmdi zmdi-mood"></i> </option>   
+                            <option value="fr"><i class="zmdi zmdi-mood-bad"></i> </option>       
+                        </select>
+                    </div> -->
+
+                <time property="timestamp" datetime=""> </time>
+                <div class="clear"></div>
+            </article>
+
+
+        </section>
+        <!--  <span>🚴🏻 😍  🌎 🛬 🛫 ☀️ ☁️ 🌥️ 🌧️ ⚠️ </span> -->
+        <footer>🦀 <span> Total of [count(postTitle)] posts found</span> <br><small> made with mavo.io</small></footer>
+    </main>
+
+    <!-- 
+<body mv-storage="local" mv-app id="foodie" class="mv-autoedit">
+
+<article property="restaurant" mv-multiple>
+	<header style="background-image: url('[picture]')">
+		<img property="picture" src="https://www.toscanoboston.com/common/images/thumb-cucina.jpg">
+		<a property="url" href="http://www.toscanoboston.com/beacon-hill">
+			<h1 property="name">Toscano</h1>
+		</a>
+
+		<p>
+			<meter property="rating" min="0" max="5" value="[average(visitRating)]" title="Overall rating: [rating]"></meter>
+		</p>
+	</header>
+
+	<section>
+		<h1>[count(visit)] Visit(s)</h1>
+
+		<article property="visit" mv-multiple>
+			<header>
+				<h1>
+					<time datetime="2016-03-15" property="date">15 Mar 2016</time>
+					<div property="title">Date night!</div>
+				</h1>
+				<p>
+					Average dish rating
+					<span property="visitRating">[average(dishRating)]</span>
+				</p>
+			</header>
+
+			<section>
+				<h1>[count(dish)] Notable Dish(es)</h1>
+				<ul>
+					<li property="dish" mv-multiple>
+						<p property="name">Filet mignon with black truffle and foie gras</p>
+						<p>
+							Rating:
+							<meter property="dishRating" min="0" value="4" max="5" mv-edit-step="0.5"></meter>
+							[dishRating]
+						</p>
+					</li>
+				</ul>
+			</section>
+		</article>
+	</section>
+</article>
+
+
+
+   -->
+
+
+
+</body>
+
+</html>

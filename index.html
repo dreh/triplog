@@ -1,121 +1,246 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <script src="https://get.mavo.io/stable/mavo.es5.min.js"></script>
-<link rel="stylesheet" href="https://get.mavo.io/stable/mavo.css">
+    <link rel="stylesheet" href="https://get.mavo.io/stable/mavo.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700|Roboto+Slab:700&display=swap"
+        rel="stylesheet">
 
-    <title>Triplog</title>
+    <title>Dreh's Triplog</title>
+    <style>
+        body {
+            font-family: 'Roboto Condensed', sans-serif;
+            color: #4F4F4F;
+            border-top: 12px solid #EAE8E3;;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            font-size: 1rem;
+            font-weight: 300;
+            margin-top:4rem;
+        }
+
+        h2 {
+            font-size: 3rem;
+            text-transform: uppercase;
+            margin: 0;
+        }
+
+        h3 {
+            font-family: 'Roboto Slab', serif;
+            font-size: 1.5rem;
+            margin: 0;
+        }
+
+        p {
+            margin-top: 0;
+            font-weight: 300;
+            font-size: 18px;
+            line-height: 1.3;
+        }
+
+        .pb-2 {
+            padding-bottom: 2rem;
+        }
+
+        .location,
+        time {
+            padding-bottom: 2rem;
+            display: inline-block;
+            font-weight: 300;
+            text-transform: capitalize;
+            font-size: .9rem;
+        }
+
+        .when {
+            display: inline-block;
+            font-weight: 300;
+            padding-bottom: 6rem;
+        }
+
+        article {
+            border-bottom: 1px solid #EAE8E3;
+        }
+
+        .mv-bar.mv-ui {
+            background-color: #546F94;
+            font-size: .75rem;
+        }
+
+        .mv-add {
+            background: transparent;
+            border: 2px solid #546F94;
+            border-radius: 3px;
+            color: #546F94;
+            text-transform: uppercase;
+            padding: 0.5rem;
+            margin-top: 3rem;
+        }
+
+        a {
+            color: #546F94;
+        }
+
+        nav a {
+            font-size: .8rem;
+            margin-left: 1rem;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        nav a,
+        nav a:focus,
+        nav a:visited,
+        nav a:active {
+            color: #76BBE5 !important;
+        }
+
+        main {
+            max-width: 800px;
+            min-height: 100vh;
+            margin: 0 auto;
+            background: #fff;
+            transition: padding 300ms ease;
+        }
+
+        img {
+            max-width: 400px;
+            margin-right: 2rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .flex-container {
+            display: flex;
+            padding: 2rem 0;
+        }
+
+        .column1 {
+            flex: 0 1;
+        }
+
+        .column2 {
+            flex: 1 0;
+        }
+
+
+        @media (max-width: 768px) {
+            img {
+
+                max-width: 100%;
+                /* height: auto; */
+                padding-top: 1rem;
+            }
+
+            body {
+                margin: 0 2rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            h3 {
+                font-size: 1.2rem;
+            }
+
+            .flex-container {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .column {
+                flex-basis: auto;
+            }
+
+            .when {
+                padding-bottom: 2rem;
+            }
+        }
+
+        .swing-in-top-fwd{-webkit-animation:swing-in-top-fwd .5s cubic-bezier(.175,.885,.32,1.275) both;animation:swing-in-top-fwd .5s cubic-bezier(.175,.885,.32,1.275) both}
+        @-webkit-keyframes swing-in-top-fwd{0%{-webkit-transform:rotateX(-100deg);transform:rotateX(-100deg);-webkit-transform-origin:top;transform-origin:top;opacity:0}100%{-webkit-transform:rotateX(0deg);transform:rotateX(0deg);-webkit-transform-origin:top;transform-origin:top;opacity:1}}@keyframes swing-in-top-fwd{0%{-webkit-transform:rotateX(-100deg);transform:rotateX(-100deg);-webkit-transform-origin:top;transform-origin:top;opacity:0}100%{-webkit-transform:rotateX(0deg);transform:rotateX(0deg);-webkit-transform-origin:top;transform-origin:top;opacity:1}}
+
+        .shake-horizontal{-webkit-animation:shake-horizontal .8s cubic-bezier(.455,.03,.515,.955) both;animation:shake-horizontal .8s cubic-bezier(.455,.03,.515,.955) both}
+
+        @-webkit-keyframes shake-horizontal{0%,100%{-webkit-transform:translateX(0);transform:translateX(0)}10%,30%,50%,70%{-webkit-transform:translateX(-10px);transform:translateX(-10px)}20%,40%,60%{-webkit-transform:translateX(10px);transform:translateX(10px)}80%{-webkit-transform:translateX(8px);transform:translateX(8px)}90%{-webkit-transform:translateX(-8px);transform:translateX(-8px)}}@keyframes shake-horizontal{0%,100%{-webkit-transform:translateX(0);transform:translateX(0)}10%,30%,50%,70%{-webkit-transform:translateX(-10px);transform:translateX(-10px)}20%,40%,60%{-webkit-transform:translateX(10px);transform:translateX(10px)}80%{-webkit-transform:translateX(8px);transform:translateX(8px)}90%{-webkit-transform:translateX(-8px);transform:translateX(-8px)}}
+    </style>
 </head>
-<body>
-<header>
-        <nav>
-            <a href="/index.html">Archives</a>
-            <a href="/about">About</a>
-            <a href="?login" class="mv-login mv-logged-out">Login to edit</a>
-        </nav>
+
+<body mv-app="triplogv0" mv-storage="https://github.com/dreh/mv-data/">
+    <header>
+            <div class="mv-bar mv-ui mv-fixed" mv-bar="no-login" ></div>
     </header>
-<main class="index">
-        <section mv-app="triplog" mv-storage="https://github.com/dreh/mv-data/triplog-data.json" mv-plugins="tinymce" class="index">
-      
-            <h1>Triplog</h1>
-            <h2 property="tripTitle">Iguazu</h2>
-                <span>[count(postTitle)] posts found</span>
-            <div class="mv-bar mv-ui mv-fixed" mv-bar="no-login"></div>
-            <article mv-multiple mv-attribute="none" mv-order="desc" property="post">
-                    <img property="image" width="400" style="float:left;">    
-                <h2 property="postTitle"></h2>
-                    <span property="location"></span>
-                    
-                    <p property="text" class="tinymce"></p>
+    <main>
+        <section>
 
-                    <!-- <img src="/demos/talks/flags/[country].png" /> -->
-               
-                    <span property="country" mv-edit="#countries"></span>
+            <h1><i class="zmdi zmdi-globe bounce-in-top"></i> Dreh´s Triplog</h1>
+            <h2 class="text-flicker-in-glow" property="tripTitle"></h2>
+            <span property="tripDate" class="when"></span>
+            <nav><!-- zmdi-menu -->
+                <a href="?login" class="mv-login mv-logged-out"><i class="zmdi zmdi-sign-in  rotate-scale-up"></i></a>
+                <a id="switch-lang"><i class="zmdi zmdi-translate  shake-horizontal"></i></a>
+            </nav>
+            <article class="flex-container" mv-multiple mv-attribute="none" mv-order="desc" property="post">
 
-                    <div hidden>
-                        <select id="countries">
-                            <option value="gb">&#x1F923;</option>
-                            <option value="bi">🚴🏻</option>
-                            <option value="lo">😍</option>
-                            <option value="su">☀️</option>
-                            <option value="cl">☁️</option>
-                            <option value="sc">🌥️</option>
-                            <option value="ra">🌧️</option>
-                            <option value="gl">🌎</option>
-                            <option value="la">🛬</option>
-                            <option value="to">🛫</option>
-                            <option value="at">⚠️</option>
-                            <option value="gr">🦀</option>          
-                        </select>
-                    </div>
+                <div class="column1">
+                    <img property="image" class="swing-in-top-fwd">
+                </div>
 
-                    <time property="timestamp" datetime=""></time>
-                    <hr style="clear:left;">
-                </article>
-    
-            
+                <div class="column2">
+                    <h3 property="postTitle"></h3>
+                    <i class="zmdi zmdi-pin "></i> <span class="location" property="location"></span> - <time
+                        property="timestamp" datetime=""> </time>
+                    <p lang="pt" property="text" class="tinymce"></p>
+                    <p lang="en-US" class="d-none" property="textEN" class="tinymce"></p>
+
+                </div>
+
+            </article>
+
         </section>
-        <span>🚴🏻 😍 🦀 🌎 🛬 🛫 ☀️ ☁️ 🌥️ 🌧️  ⚠️ </span>
+
+        <footer>🦀 <span> Total of [count(postTitle)] posts found</span> <br><small style="font-weight:300;"> made with
+                mavo.io, <br> pictures by
+                unsplash</small></footer>
     </main>
-   
-   <!-- 
-<body mv-storage="local" mv-app id="foodie" class="mv-autoedit">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
+    <script>
+ //check the browser language
+ var language = window.navigator.userLanguage || window.navigator.language;
+//alert(language); //works IE/SAFARI/CHROME/FF
 
-<article property="restaurant" mv-multiple>
-	<header style="background-image: url('[picture]')">
-		<img property="picture" src="https://www.toscanoboston.com/common/images/thumb-cucina.jpg">
-		<a property="url" href="http://www.toscanoboston.com/beacon-hill">
-			<h1 property="name">Toscano</h1>
-		</a>
+        if (language === 'pt' || language === 'pt-BR') {
+            $('[lang="en-US"]').hide();
+        }
+        else {
+            $('[lang="pt"]').hide();
+        }
 
-		<p>
-			<meter property="rating" min="0" max="5" value="[average(visitRating)]" title="Overall rating: [rating]"></meter>
-		</p>
-	</header>
+        //$('[lang="en-US"]').hide();
 
-	<section>
-		<h1>[count(visit)] Visit(s)</h1>
+        $('#switch-lang').click(function () {
+            $('[lang="pt"]').toggle();
+            $('[lang="en-US"]').toggle();
+        });
 
-		<article property="visit" mv-multiple>
-			<header>
-				<h1>
-					<time datetime="2016-03-15" property="date">15 Mar 2016</time>
-					<div property="title">Date night!</div>
-				</h1>
-				<p>
-					Average dish rating
-					<span property="visitRating">[average(dishRating)]</span>
-				</p>
-			</header>
+       
 
-			<section>
-				<h1>[count(dish)] Notable Dish(es)</h1>
-				<ul>
-					<li property="dish" mv-multiple>
-						<p property="name">Filet mignon with black truffle and foie gras</p>
-						<p>
-							Rating:
-							<meter property="dishRating" min="0" value="4" max="5" mv-edit-step="0.5"></meter>
-							[dishRating]
-						</p>
-					</li>
-				</ul>
-			</section>
-		</article>
-	</section>
-</article>
-
-<footer>Total: [count(rating > 3)] good restaurants out of [count(restaurant)] total</footer>
+    </script>
 
 </body>
 
-   -->
-
-   <!--  <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script> -->
-    
-</body>
 </html>
